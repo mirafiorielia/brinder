@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993242623022",
+    "project_id": "brindersocial",
+    "storage_bucket": "brindersocial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993242623022:android:1782bcb2bd834be39483bf",
+        "android_client_info": {
+          "package_name": "com.aworldaway.brinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993242623022-7oculd41jbqt0q0avlc888bggbggjf09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_g-hFViPYMbbDT9xBCc-2HJZkYNPImDo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993242623022-7oculd41jbqt0q0avlc888bggbggjf09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
