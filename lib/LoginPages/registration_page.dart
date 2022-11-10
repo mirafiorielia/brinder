@@ -130,7 +130,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 21),
                     _buildUsernameField(),
                     const SizedBox(height: 21),
                     _buildEmailField(),
