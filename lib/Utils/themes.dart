@@ -14,12 +14,12 @@ final ThemeData lightTheme = ThemeData(
   textTheme: const TextTheme(
     headline1: TextStyle(
       color: primary,
-      fontSize: 20,
+      fontSize: 21,
       fontWeight: FontWeight.bold,
     ),
     bodyText1: TextStyle(
       color: primary,
-      fontSize: 15,
+      fontSize: 18,
     ),
     button: TextStyle(
       color: primary,
@@ -56,7 +56,7 @@ final ThemeData lightTheme = ThemeData(
     unselectedItemColor: Colors.white,
   ),
   iconTheme: const IconThemeData(
-    color: onSecondary,
+    color: Colors.white,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
@@ -89,27 +89,27 @@ final ThemeData lightTheme = ThemeData(
   inputDecorationTheme: const InputDecorationTheme(
     filled: false,
     fillColor: Colors.transparent,
-    labelStyle: TextStyle(color: primary),
-    helperStyle: TextStyle(color: primary),
-    hintStyle: TextStyle(color: primary),
+    labelStyle: TextStyle(color: Colors.white),
+    helperStyle: TextStyle(color: Colors.white),
+    hintStyle: TextStyle(color: Colors.white),
     errorStyle: TextStyle(color: Colors.red),
-    iconColor: primary,
-    prefixIconColor: primary,
-    suffixIconColor: primary,
+    iconColor: Colors.white,
+    prefixIconColor: Colors.white,
+    suffixIconColor: Colors.white,
     enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: primary),
+      borderSide: BorderSide(color: Colors.white),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
     disabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: primary),
+      borderSide: BorderSide(color: Colors.white),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
     border: UnderlineInputBorder(
-      borderSide: BorderSide(color: primary),
+      borderSide: BorderSide(color: Colors.white),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
     focusedBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: primary),
+      borderSide: BorderSide(color: Colors.white),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
     errorBorder: UnderlineInputBorder(

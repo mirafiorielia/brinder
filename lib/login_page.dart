@@ -1,5 +1,7 @@
+import 'package:brinder/CustomWidgets/custom_background.dart';
 import 'package:brinder/CustomWidgets/custom_textfield.dart';
 import 'package:brinder/Utils/colors.dart';
+import 'package:brinder/Utils/functions.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -19,6 +21,21 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
   }
 
+  Widget _buildRegisterButton() {
+    return TextButton(
+      onPressed: () {showSnackBar(context, 'REGISTER', false);},
+      child: Text(
+        'Registrati',
+        style: Theme.of(context).textTheme.bodyText1?.merge(
+              const TextStyle(
+                color: primary,
+                letterSpacing: 2,
+              ),
+            ),
+      ),
+    );
+  }
+
   Widget _buildPasswordField() {
     return CustomTextField(
       controller: passwordController,
@@ -29,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       onSuffixIconPressed: () {
         passwordController.clear();
       },
-      margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
     );
   }
 
@@ -43,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
       onSuffixIconPressed: () {
         emailController.clear();
       },
-      margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
     );
   }
 
@@ -52,10 +69,7 @@ class _LoginPageState extends State<LoginPage> {
       'Brinder',
       style: Theme.of(context).textTheme.headline1?.merge(
             const TextStyle(
-              color: primary,
-              fontSize: 100,
-              fontWeight: FontWeight.normal
-            ),
+                color: primary, fontSize: 100, fontWeight: FontWeight.normal),
           ),
     );
   }
@@ -64,25 +78,31 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            _buildTitle(),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.13),
-            SingleChildScrollView(
+          child: Column(
+        children: [
+          _buildTitle(),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.13),
+          SingleChildScrollView(
+            child: CustomBackground(
+              backgroundColor: primaryLight,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _buildEmailField(),
                   const SizedBox(height: 21),
+                  _buildEmailField(),
+                  const SizedBox(height: 34),
                   _buildPasswordField(),
+                  const SizedBox(height: 21),
                 ],
               ),
             ),
-          ],
-        )
-      ),
+          ),
+          const SizedBox(height: 34),
+          _buildRegisterButton(),
+        ],
+      )),
     );
   }
 }
