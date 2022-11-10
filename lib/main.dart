@@ -1,6 +1,6 @@
 import 'package:brinder/Utils/colors.dart';
 import 'package:brinder/home_page.dart';
-import 'package:brinder/login_page.dart';
+import 'package:brinder/LoginPages/login_page.dart';
 import 'package:brinder/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,6 @@
 import 'package:brinder/CustomWidgets/custom_background.dart';
 import 'package:brinder/CustomWidgets/custom_textfield.dart';
+import 'package:brinder/LoginPages/registration_page.dart';
 import 'package:brinder/Utils/colors.dart';
 import 'package:brinder/Utils/functions.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,25 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  void _pushToRegistration() {
+    Navigator.of(context).popUntil((route) => route.isFirst);
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const RegistrationPage(),
+      ),
+    );
+  }
+
   Widget _buildRegisterButton() {
     return TextButton(
-      onPressed: () {showSnackBar(context, 'REGISTER', false);},
+      onPressed: _pushToRegistration,
       child: Text(
         'Registrati',
         style: Theme.of(context).textTheme.bodyText1?.merge(
@@ -69,7 +86,10 @@ class _LoginPageState extends State<LoginPage> {
       'Brinder',
       style: Theme.of(context).textTheme.headline1?.merge(
             const TextStyle(
-                color: primary, fontSize: 100, fontWeight: FontWeight.normal),
+              color: primary,
+              fontSize: 100,
+              fontWeight: FontWeight.normal,
+            ),
           ),
     );
   }

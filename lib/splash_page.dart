@@ -1,5 +1,5 @@
 import 'package:brinder/Utils/colors.dart';
-import 'package:brinder/login_page.dart';
+import 'package:brinder/LoginPages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
