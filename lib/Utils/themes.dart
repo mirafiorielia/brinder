@@ -9,8 +9,8 @@ final ThemeData lightTheme = ThemeData(
   backgroundColor: background,
   scaffoldBackgroundColor: background,
   dialogBackgroundColor: background,
-  splashColor: primaryLight,
-  fontFamily: GoogleFonts.lobsterTwo().fontFamily,
+  splashColor: primary,
+  fontFamily: GoogleFonts.inter().fontFamily,
   textTheme: const TextTheme(
     headline1: TextStyle(
       color: primary,
@@ -80,7 +80,7 @@ final ThemeData lightTheme = ThemeData(
         //fontSize: 18,
       ),
       side: const BorderSide(
-        color: primaryLight,
+        color: primary,
         width: 2,
       ),
       shape: const StadiumBorder(),
@@ -92,7 +92,7 @@ final ThemeData lightTheme = ThemeData(
     labelStyle: TextStyle(color: primary),
     helperStyle: TextStyle(color: primary),
     hintStyle: TextStyle(color: primary),
-    errorStyle: TextStyle(color: Colors.red),
+    errorStyle: TextStyle(color: error),
     iconColor: primary,
     prefixIconColor: primary,
     suffixIconColor: primary,
@@ -113,7 +113,7 @@ final ThemeData lightTheme = ThemeData(
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
     errorBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: Colors.red),
+      borderSide: BorderSide(color: error),
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
   ),

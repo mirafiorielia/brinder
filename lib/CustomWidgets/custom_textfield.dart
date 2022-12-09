@@ -36,7 +36,7 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         keyboardType: inputType,
         style: TextStyle(color: textColor),
-        cursorColor: Colors.white,
+        cursorColor: textColor,
         minLines: 1,
         maxLines: 20,
         onChanged: (value) {},
@@ -62,6 +62,23 @@ class CustomTextField extends StatelessWidget {
           ),
           suffixIconColor: iconColor,
           hintText: hint,
+          hintStyle: Theme.of(context).textTheme.bodyText1?.merge(
+                TextStyle(
+                  color: textColor,
+                ),
+              ),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(color: textColor),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: textColor),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: textColor),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+          ),
         ),
       ),
     );

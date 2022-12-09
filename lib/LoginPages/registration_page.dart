@@ -17,6 +17,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
       emailController,
       passwordController;
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     usernameController = TextEditingController(text: '');
@@ -34,24 +36,39 @@ class _RegistrationPageState extends State<RegistrationPage> {
   }
 
   Widget _buildRegisterButton() {
-    return TextButton(
-      onPressed: () async {
-        String username = usernameController.text.toString();
-        String email = emailController.text.toString();
-        String password = passwordController.text.toString();
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 21),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: () async {
+              String username = usernameController.text.toLowerCase();
+              String email = emailController.text.toLowerCase();
+              String password = passwordController.text.toString();
 
-        if (username.isEmpty || email.isEmpty || password.isEmpty) return;
+              if (!_formKey.currentState!.validate()) {
+                print('MANCANO I CAMPI');
+                return;
+              }
 
-        await FirebaseApi.createUser(email, password);
-      },
-      child: Text(
-        'Registrati',
-        style: Theme.of(context).textTheme.bodyText1?.merge(
-              const TextStyle(
-                color: primary,
-                letterSpacing: 2,
-              ),
+              await FirebaseApi.createUser(email, password);
+
+              if (mounted) return;
+              Navigator.of(context).pop();
+            },
+            child: Text(
+              'Registrati',
+              style: Theme.of(context).textTheme.headline1?.merge(
+                    const TextStyle(
+                      letterSpacing: 2,
+                    ),
+                  ),
             ),
+          ),
+        ],
       ),
     );
   }
@@ -62,11 +79,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
       hint: 'Password',
       prefixIcon: Icons.lock_rounded,
       suffixIcon: Icons.cancel_rounded,
+      textColor: onPrimary,
+      iconColor: onPrimary,
       inputType: TextInputType.visiblePassword,
       onSuffixIconPressed: () {
         passwordController.clear();
       },
-      margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
     );
   }
 
@@ -76,11 +95,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
       hint: 'Email',
       prefixIcon: Icons.email_rounded,
       suffixIcon: Icons.cancel_rounded,
+      textColor: onPrimary,
+      iconColor: onPrimary,
       inputType: TextInputType.emailAddress,
       onSuffixIconPressed: () {
         emailController.clear();
       },
-      margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
     );
   }
 
@@ -90,24 +111,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
       hint: 'Username',
       prefixIcon: Icons.person_rounded,
       suffixIcon: Icons.cancel_rounded,
+      textColor: onPrimary,
+      iconColor: onPrimary,
       inputType: TextInputType.emailAddress,
       onSuffixIconPressed: () {
         usernameController.clear();
       },
-      margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
     );
   }
 
   Widget _buildTitle() {
-    return Text(
-      'Registrati',
-      style: Theme.of(context).textTheme.headline1?.merge(
-            const TextStyle(
-              color: primary,
-              fontSize: 100,
-              fontWeight: FontWeight.normal,
+    return Container(
+      margin: const EdgeInsets.only(top: 21, bottom: 13),
+      child: Text(
+        'Registrati',
+        style: Theme.of(context).textTheme.headline1?.merge(
+              const TextStyle(
+                fontSize: 50,
+              ),
             ),
-          ),
+      ),
     );
   }
 
@@ -121,7 +145,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _buildTitle(),
-            const SizedBox(height: 89),
             Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -130,11 +153,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    _buildUsernameField(),
-                    const SizedBox(height: 21),
-                    _buildEmailField(),
-                    const SizedBox(height: 21),
-                    _buildPasswordField(),
+                    const SizedBox(height: 89),
+                    CustomBackground(
+                      backgroundColor: primary,
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const SizedBox(height: 21),
+                            _buildUsernameField(),
+                            const SizedBox(height: 34),
+                            _buildEmailField(),
+                            const SizedBox(height: 34),
+                            _buildPasswordField(),
+                            const SizedBox(height: 21),
+                          ],
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: 34),
                     _buildRegisterButton(),
                   ],

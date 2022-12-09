@@ -22,6 +22,14 @@ class CustomBackground extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: const BorderRadius.all(Radius.circular(21)),
+        boxShadow: [
+          BoxShadow(
+            color: secondary.withOpacity(0.50),
+            blurRadius: 5,
+            spreadRadius: 3,
+            offset: const Offset(3, 3),
+          ),
+        ],
       ),
       child: child,
     );
